@@ -1,0 +1,8 @@
+# Test your FastAPI endpoints
+
+POST http://localhost:8000/greet
+Content-Type: application/json
+
+{
+  "username": "alice"
+}

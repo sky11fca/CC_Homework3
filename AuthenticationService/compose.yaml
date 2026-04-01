@@ -1,0 +1,14 @@
+﻿services:
+  authenticationservice.api:
+    image: authenticationservice.api
+    build:
+      context: .
+      dockerfile: AuthenticationService.API/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/auth.db
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5000

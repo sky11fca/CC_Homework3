@@ -1,0 +1,33 @@
+# Specifies the runtime environment. 'custom' allows us to use our own Dockerfile.
+runtime: custom
+# Specifies that we are using the App Engine Flexible Environment.
+env: flex
+
+# Environment variables that will be available to your application.
+# IMPORTANT: For production, use a secrets management tool like Google Secret Manager
+# to handle your database password instead of placing it here in plain text.
+env_variables:
+  # The name of the database you created in your Cloud SQL instance.
+  DB_DATABASE: "bobbydb"
+  # The database user you created.
+  DB_USERNAME: "bobby"
+  # The password for the database user.
+  DB_PASSWORD: "some_pass"
+  # This is the special path to the Unix socket for the Cloud SQL instance.
+  # It will be created automatically by App Engine based on the setting below.
+  # Replace the placeholder with your actual Cloud SQL Instance Connection Name.
+  DB_SOCKET: "/cloudsql/YOUR_PROJECT_ID:YOUR_REGION:YOUR_INSTANCE_NAME"
+
+# These settings enable the Cloud SQL Auth Proxy, which provides a secure
+# connection from your App Engine instance to your Cloud SQL database.
+beta_settings:
+  # Replace the placeholder with your Instance Connection Name. You can find this
+  # on the Cloud SQL instance's overview page in the Google Cloud Console.
+  cloud_sql_instances: "YOUR_PROJECT_ID:YOUR_REGION:YOUR_INSTANCE_NAME"
+
+# Configures automatic scaling for your application based on CPU utilization.
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 5
+  cpu_utilization:
+    target_utilization: 0.6

@@ -1,0 +1,9 @@
+dispatch:
+  -url: "*/api/chat/*"
+  service: chatbotapi
+
+  -url: "*/api/auth/*"
+  service: authapi
+
+  -url: "*/*"
+  service: default

@@ -1,0 +1,35 @@
+services:
+  php-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_DATABASE=bobbydb
+      - DB_USERNAME=bobby
+      - DB_PASSWORD=some_pass
+    depends_on:
+      - mariadb
+
+  mariadb:
+    build:
+      context: ./docker/mariadb
+      dockerfile: Dockerfile
+    ports:
+      - "3307:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root_password
+      - MARIADB_DATABASE=bobbydb
+      - MARIADB_USER=bobby
+      - MARIADB_PASSWORD=some_pass
+    volumes:
+      - ./creation_script.sql:/docker-entrypoint-initdb.d/01-creation_script.sql
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:

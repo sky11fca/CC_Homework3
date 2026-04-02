@@ -24,14 +24,38 @@
       <section class="card">
         <h2>💬 Asistent Virtual </h2>
         <div class="chat-window">
-          <div v-if="chatResponse" class="bot-message">
-            <strong>Bot:</strong> {{ chatResponse }}
+          <div v-for="(entry, index) in chatHistory" :key="index" class="bot-message">
+            <strong>{{ entry.role === 'user' ? 'Tu' : 'Bot' }}:</strong> {{ entry.content }}
           </div>
         </div>
         <div class="chat-input-area">
           <input v-model="chatMessage" placeholder="Întreabă-mă ceva..." class="input-field" @keyup.enter="sendMessage" />
-          <button @click="sendMessage" class="btn secondary" :disabled="!chatMessage">Trimite</button>
+          <button @click="sendMessage" class="btn secondary" :disabled="!chatMessage || isChatLoading">
+            {{ isChatLoading ? 'Se generează...' : 'Trimite' }}
+          </button>
         </div>
+      </section>
+
+      <section class="card">
+        <h2>🔐 Login</h2>
+        <input
+          v-model="loginEmail"
+          type="email"
+          placeholder="Email"
+          class="input-field"
+        />
+        <input
+          v-model="loginPassword"
+          type="password"
+          placeholder="Parolă"
+          class="input-field"
+          @keyup.enter="loginUser"
+        />
+        <button @click="loginUser" class="btn primary" :disabled="isLoggingIn || !loginEmail || !loginPassword">
+          {{ isLoggingIn ? 'Se autentifică...' : 'Login' }}
+        </button>
+        <p v-if="loginStatus" class="status-message">{{ loginStatus }}</p>
+        <p v-if="authTokenPreview" class="token-preview">Token: {{ authTokenPreview }}</p>
       </section>
 
       <section class="card">
@@ -65,6 +89,15 @@ const items = ref([]);
 // Stări pentru Teammate C (Chat)
 const chatMessage = ref('');
 const chatResponse = ref('Salut! Cu ce te pot ajuta?');
+const chatHistory = ref([{ role: 'assistant', content: chatResponse.value }]);
+const isChatLoading = ref(false);
+
+// Stări autentificare
+const loginEmail = ref('');
+const loginPassword = ref('');
+const loginStatus = ref('');
+const authTokenPreview = ref('');
+const isLoggingIn = ref(false);
 
 // Stări pentru Tine (Media)
 const selectedFile = ref(null);
@@ -75,7 +108,16 @@ const isUploading = ref(false);
 const fetchItems = async () => {
   try {
     const response = await axios.get('/api/items/');
-    items.value = response.data;
+    const payload = Array.isArray(response.data)
+      ? response.data
+      : Array.isArray(response.data?.data)
+        ? response.data.data
+        : [];
+    items.value = payload.map((item) => ({
+      ...item,
+      quantity: Number(item.quantity ?? 0),
+      price: Number(item.price ?? 0),
+    }));
   } catch (error) {
     alert("Eroare la conectarea cu PhpApi. Asigură-te că serverul colegului rulează!");
     console.error(error);
@@ -83,14 +125,75 @@ const fetchItems = async () => {
 };
 
 const sendMessage = async () => {
-  if (!chatMessage.value) return;
+  const message = chatMessage.value.trim();
+  if (!message) return;
+
+  const historyForApi = chatHistory.value
+    .filter((entry) => entry.role === 'user' || entry.role === 'assistant')
+    .map((entry) => ({
+      role: entry.role,
+      content: entry.content,
+    }))
+    .slice(-8);
+
+  chatHistory.value.push({ role: 'user', content: message });
+  chatMessage.value = '';
+  isChatLoading.value = true;
+
   try {
-    const response = await axios.post('/ai/chat', { message: chatMessage.value, history: [] });
-    chatResponse.value = response.data.response;
-    chatMessage.value = '';
+    const response = await axios.post('/ai/chat', { message, history: historyForApi });
+    const answer =
+      typeof response?.data?.response === 'string' && response.data.response.trim().length
+        ? response.data.response
+        : 'Nu am primit un răspuns valid de la asistent.';
+
+    chatResponse.value = answer;
+    chatHistory.value.push({ role: 'assistant', content: answer });
   } catch (error) {
+    const fallback = 'Asistentul nu a răspuns. Te rog încearcă din nou.';
+    chatResponse.value = fallback;
+    chatHistory.value.push({ role: 'assistant', content: fallback });
     alert("Eroare Chatbot. Asigură-te că serviciul Python/.NET rulează!");
     console.error(error);
+  } finally {
+    isChatLoading.value = false;
+  }
+};
+
+const loginUser = async () => {
+  if (!loginEmail.value || !loginPassword.value) {
+    loginStatus.value = 'Completează email și parolă.';
+    return;
+  }
+
+  isLoggingIn.value = true;
+  loginStatus.value = '';
+  authTokenPreview.value = '';
+
+  try {
+    const response = await axios.post('/api/auth/login', {
+      email: loginEmail.value.trim(),
+      plainPassword: loginPassword.value,
+    });
+
+    let token = response.data;
+    if (typeof response.data === 'object' && response.data?.token) {
+      token = response.data.token;
+    }
+
+    const tokenString = typeof token === 'string' ? token : JSON.stringify(token);
+    localStorage.setItem('token', tokenString);
+    authTokenPreview.value = `${tokenString.slice(0, 24)}...`;
+    loginStatus.value = 'Autentificare reușită.';
+  } catch (error) {
+    const backendMessage = error?.response?.data;
+    const message =
+      typeof backendMessage === 'string'
+        ? backendMessage
+        : backendMessage?.detail || backendMessage?.message || 'Autentificare eșuată.';
+    loginStatus.value = message;
+  } finally {
+    isLoggingIn.value = false;
   }
 };
 
@@ -133,8 +236,11 @@ const uploadImage = async () => {
 .chat-window { min-height: 100px; background: #ecf0f1; padding: 10px; border-radius: 8px; margin-bottom: 15px; }
 .bot-message { background: white; padding: 10px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 .input-field { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; }
+.input-field + .input-field { margin-top: 10px; }
 .file-input { margin-bottom: 15px; width: 100%; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { background: #9b59b6; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.9em; }
 .empty-state { color: #7f8c8d; font-style: italic; }
+.status-message { margin: 8px 0 0 0; color: #2c3e50; }
+.token-preview { margin: 6px 0 0 0; color: #16a085; font-size: 0.85em; word-break: break-all; }
 </style>

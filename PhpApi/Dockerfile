@@ -3,6 +3,9 @@ FROM php:8.2-apache
 # Enable Apache mod_rewrite for API routing
 RUN a2enmod rewrite
 
+# Enable AllowOverride for .htaccess to process routing rules
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
 # Suppress the AH00558 ServerName warning
 # RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 

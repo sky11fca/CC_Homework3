@@ -119,7 +119,7 @@ Important notes before final submission:
 
 ## Bogdan Checklist (Data + PHP API + Audit Logger)
 
-- [ ] Finalize PHP API Cloud SQL production wiring
+- [x] Finalize PHP API Cloud SQL production wiring
 - [ ] Ensure migrations/init scripts are production-safe
 - [ ] Implement/deploy audit logging service and connect it to DB change events
 - [ ] Validate audit records are persisted/queryable

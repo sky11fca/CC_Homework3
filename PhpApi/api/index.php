@@ -48,16 +48,16 @@ $itemId = $uri_segments[3] ?? null;
 
 switch ($method) {
     case 'GET':
-        if($requestUri === "/api/help"){
+        if($requestUri === "/api/items/help"){
             $getHelp->getHelp();
         }
-        elseif ($requestUri === "/api/items"){
+        elseif ($requestUri === "/api/items/"){
             $itemService->getItems();
         }
         elseif ($requestUri === "/api/items/" . $itemId) {
             $itemService->getItemById($itemId);
         }
-        elseif ($requestUri === "/api/purchases") {
+        elseif ($requestUri === "/api/items/purchases") {
             $itemService->getPurchases();
         }
         else{
@@ -76,7 +76,7 @@ switch ($method) {
         if($requestUri === "/api/items" && $data) {
             $itemService->addItem($data);
         }
-        elseif($requestUri === "/api/purchase/". $itemId){
+        elseif($requestUri === "/api/items/purchase/". $itemId){
             $itemService->purchaseItem($itemId, $data);
         }
         else {
@@ -91,7 +91,7 @@ switch ($method) {
         }
         break;
     case 'DELETE':
-        if($requestUri === "/api/items")
+        if($requestUri === "/api/items/")
         {
             $itemService->clearRotten();
         }

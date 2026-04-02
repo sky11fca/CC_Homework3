@@ -1,3 +1,5 @@
+# Defines the service name to match the dispatch.yaml routing
+service: itemapi
 # Specifies the runtime environment. 'custom' allows us to use our own Dockerfile.
 runtime: custom
 # Specifies that we are using the App Engine Flexible Environment.
@@ -16,14 +18,14 @@ env_variables:
   # This is the special path to the Unix socket for the Cloud SQL instance.
   # It will be created automatically by App Engine based on the setting below.
   # Replace the placeholder with your actual Cloud SQL Instance Connection Name.
-  DB_SOCKET: "/cloudsql/YOUR_PROJECT_ID:YOUR_REGION:YOUR_INSTANCE_NAME"
+  DB_SOCKET: "/cloudsql/cloud-hw3-491910:europe-west2:itemmanagement-api-db"
 
 # These settings enable the Cloud SQL Auth Proxy, which provides a secure
 # connection from your App Engine instance to your Cloud SQL database.
 beta_settings:
   # Replace the placeholder with your Instance Connection Name. You can find this
   # on the Cloud SQL instance's overview page in the Google Cloud Console.
-  cloud_sql_instances: "YOUR_PROJECT_ID:YOUR_REGION:YOUR_INSTANCE_NAME"
+  cloud_sql_instances: "cloud-hw3-491910:europe-west2:itemmanagement-api-db"
 
 # Configures automatic scaling for your application based on CPU utilization.
 automatic_scaling:

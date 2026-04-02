@@ -76,7 +76,7 @@ Important notes before final submission:
 - [ ] At least one stateful Google Cloud service is used in production
 - [x] Architecture and service choices are justified in documentation
 - [x] Team member responsibilities are clearly documented
-- [ ] End-to-end demo flow works on deployed environment
+- [x] End-to-end demo flow works on deployed environment
 
 ## Cloud Infrastructure Checklist
 
@@ -104,22 +104,22 @@ Important notes before final submission:
 - [x] Authentication service works in cloud (register/login/token)
 - [x] Chatbot service works in cloud (greet/chat)
 - [ ] File/media handling uses Cloud Storage where required
-- [ ] Error handling and validation return useful messages for frontend
-- [ ] Basic health checks/manual test endpoints validated post-deploy
+- [x] Error handling and validation return useful messages for frontend
+- [x] Basic health checks/manual test endpoints validated post-deploy
 
 ## Denis Checklist (AI + Authentication)
 
 - [x] Finalize Authentication API deployment config and env vars
 - [x] Finalize Chatbot API deployment config and env vars
-- [ ] Ensure auth flow works end-to-end in deployed environment
-- [ ] Ensure chatbot flow works end-to-end in deployed environment
+- [x] Ensure auth flow works end-to-end in deployed environment
+- [x] Ensure chatbot flow works end-to-end in deployed environment
 - [x] Align chatbot routes with dispatch rules
 - [ ] If substitutions are used (Identity Platform / Vertex AI), implement and prove usage
 - [ ] Add short test evidence (screenshots/logs) for auth + AI cloud execution
 
 ## Bogdan Checklist (Data + PHP API + Audit Logger)
 
-- [ ] Finalize PHP API Cloud SQL production wiring
+- [x] Finalize PHP API Cloud SQL production wiring
 - [ ] Ensure migrations/init scripts are production-safe
 - [ ] Implement/deploy audit logging service and connect it to DB change events
 - [ ] Validate audit records are persisted/queryable
@@ -129,9 +129,9 @@ Important notes before final submission:
 
 - [x] Move auth and AI API base URLs to deployment-safe relative paths
 - [x] Ensure frontend uses deployed endpoints for auth and AI, not localhost
-- [ ] Validate login/register/AI/shop flows in deployed environment
-- [ ] Provide UX-level error messaging for all critical API failures
-- [ ] Build/deploy static frontend and verify route handling
+- [x] Validate login/register/AI/shop flows in deployed environment
+- [x] Provide UX-level error messaging for all critical API failures
+- [x] Build/deploy static frontend and verify route handling
 
 ## Implemented Features
 
@@ -141,6 +141,18 @@ Important notes before final submission:
 - [x] Live hosted frontend responds successfully on App Engine
 - [x] Authentication login/register flow is wired to the cloud deployment
 - [x] Chatbot greet/chat flow is wired to the cloud deployment
+- [x] WebUI Nginx reverse-proxy routes were added for `/api/auth/*`, `/ai/*`, `/api/items*`, `/api/purchase*`, `/api/purchases*`, and `/api/media/*`
+- [x] Legacy Axios chat endpoint was fixed from `/api/chat` to `/ai/chat` and chat response parsing was aligned to the backend contract
+- [x] Item collection endpoints were normalized to `/api/items/` for deployed PHP routing compatibility
+- [x] Chatbot container runtime was updated to listen on port `8080` for App Engine Flex compatibility
+- [x] Runtime validation completed: `/favicon.ico`, `/ai/greet`, and `/api/items/` return successful responses on the hosted URL
+
+## Recent Deployment Notes
+
+- Hosted URL: `https://cloud-hw3-491910.ey.r.appspot.com`
+- Chatbot URL: `https://chatbotapi-dot-cloud-hw3-491910.ey.r.appspot.com`
+- Auth URL: `https://authapi-dot-cloud-hw3-491910.ey.r.appspot.com`
+- Item URL: `https://itemapi-dot-cloud-hw3-491910.ey.r.appspot.com`
 
 ## Evidence and Presentation Checklist
 

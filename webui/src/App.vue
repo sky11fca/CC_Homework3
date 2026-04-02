@@ -74,7 +74,7 @@ const isUploading = ref(false);
 // Funcții API
 const fetchItems = async () => {
   try {
-    const response = await axios.get('/api/items');
+    const response = await axios.get('/api/items/');
     items.value = response.data;
   } catch (error) {
     alert("Eroare la conectarea cu PhpApi. Asigură-te că serverul colegului rulează!");
@@ -85,8 +85,8 @@ const fetchItems = async () => {
 const sendMessage = async () => {
   if (!chatMessage.value) return;
   try {
-    const response = await axios.post('/api/chat', { message: chatMessage.value });
-    chatResponse.value = response.data.reply;
+    const response = await axios.post('/ai/chat', { message: chatMessage.value, history: [] });
+    chatResponse.value = response.data.response;
     chatMessage.value = '';
   } catch (error) {
     alert("Eroare Chatbot. Asigură-te că serviciul Python/.NET rulează!");

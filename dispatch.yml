@@ -1,22 +1,11 @@
 dispatch:
-  # Rute către Teammate B (Data & Logic)
-  - url: "*/api/items/*"
-    service: itemapi
-
-
   - url: "*/ai/*"
     service: chatbotapi
-
-  # Rute către Teammate C (AI & Security)
   - url: "*/api/auth/*"
     service: authapi
-  - url: "*/api/chat/*"
-    service: chatbotapi
-
-  # Ruta către serviciul tău secundar (Media Processing)
+  - url: "*/api/items/*"
+    service: itemapi
   - url: "*/api/media/*"
     service: mediaapi
-
-  # Orice altceva merge către interfața ta web (Vue)
   - url: "*/*"
     service: default

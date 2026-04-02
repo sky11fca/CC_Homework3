@@ -1,11 +1,8 @@
-runtime: nodejs20
-service: default
+runtime: custom
+env: flex
 
-handlers:
-  - url: /(.*\..+)$
-    static_files: dist/\1
-    upload: dist/(.*\..+)$
-
-  - url: /.*
-    static_files: dist/index.html
-    upload: dist/index.html
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cpu_utilization:
+    target_utilization: 0.6

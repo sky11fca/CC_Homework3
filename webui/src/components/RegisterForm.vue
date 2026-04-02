@@ -8,21 +8,36 @@ const username = ref('');
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
+const isSubmitting = ref(false);
+const errorMessage = ref('');
+const successMessage = ref('');
 
 const submitRegister = async () => {
+  errorMessage.value = '';
+  successMessage.value = '';
+
   if (password.value !== confirmPassword.value) {
-    alert('Passwords do not match');
+    errorMessage.value = 'Passwords do not match.';
     return;
   }
 
+  isSubmitting.value = true;
+
   try{
-     const response = await register({username: username.value, email: email.value, password: password.value});
-     console.log(response);
+     await register({username: username.value, email: email.value, password: password.value});
+     successMessage.value = 'Account created. You can now log in.';
      emit('switch');
   }
   catch(e)
   {
-    console.error("something went wrong", e)
+    if (e instanceof Error) {
+      errorMessage.value = e.message;
+    } else {
+      errorMessage.value = 'An unexpected error occurred during registration.';
+    }
+  }
+  finally {
+    isSubmitting.value = false;
   }
 };
 </script>
@@ -47,8 +62,12 @@ const submitRegister = async () => {
         <label for="confirmPassword">Confirm Password</label>
         <input id="confirmPassword" type="password" v-model="confirmPassword" required />
       </div>
-      <button type="submit" class="submit-btn">Register</button>
+      <button type="submit" class="submit-btn" :disabled="isSubmitting">
+        {{ isSubmitting ? 'Registering...' : 'Register' }}
+      </button>
     </form>
+    <p v-if="errorMessage" class="error-msg">{{ errorMessage }}</p>
+    <p v-if="successMessage" class="success-msg">{{ successMessage }}</p>
     <button type="button" class="switch-btn" @click="emit('switch')">
       Already have an account? Login
     </button>
@@ -84,5 +103,19 @@ const submitRegister = async () => {
   text-decoration: underline;
   cursor: pointer;
   margin-top: 1rem;
+}
+
+.error-msg {
+  color: #b00020;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.success-msg {
+  color: #0a7a35;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-size: 0.9rem;
 }
 </style>

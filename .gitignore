@@ -63,3 +63,5 @@ vendor/
 /cypress/videos/
 /cypress/screenshots/
 __screenshots__/
+
+MediaService/google-key.json

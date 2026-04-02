@@ -12,7 +12,9 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 // Inițializăm clientul Google Cloud Vision
 // Notă: Pe Google App Engine, se va autentifica automat folosind contul de serviciu default
-const client = new vision.ImageAnnotatorClient();
+const client = new vision.ImageAnnotatorClient({
+    keyFilename: 'google-key.json' 
+  });
 
 app.post('/api/media/upload', upload.single('image'), async (req, res) => {
     try {
@@ -34,7 +36,23 @@ app.post('/api/media/upload', upload.single('image'), async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Media Service rulează pe portul ${PORT}`);
+const PORT = process.env.PORT || 8081;
+
+const server = app.listen(PORT, () => {
+    console.log(`✅ Media Service rulează pe portul ${PORT}`);
+    console.log(`⏳ Aștept conexiuni...`);
+});
+
+// --- RADARE PENTRU ERORI INVIZIBILE ---
+
+server.on('error', (error) => {
+    console.error('❌ Eroare la rețea/port:', error);
+});
+
+process.on('uncaughtException', (error) => {
+    console.error('❌ Eroare fatală ascunsă care a închis serverul:', error);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('❌ S-a blocat o funcție în fundal:', reason);
 });

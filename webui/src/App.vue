@@ -1,14 +1,13 @@
 <template>
   <div class="dashboard">
     <header class="header">
-      <h1>Platformă E-Commerce (Microservicii)</h1>
-      <p>Frontend Manager: Teammate A</p>
+      <h1>Enrique's Shop </h1>
     </header>
 
     <div class="grid-container">
       
       <section class="card">
-        <h2>📦 Inventar (PHP API)</h2>
+        <h2>📦 Inventar </h2>
         <button @click="fetchItems" class="btn primary">Încarcă Articole</button>
         
         <div v-if="items.length" class="item-list">
@@ -23,7 +22,7 @@
       </section>
 
       <section class="card">
-        <h2>💬 Asistent Virtual (Vertex AI)</h2>
+        <h2>💬 Asistent Virtual </h2>
         <div class="chat-window">
           <div v-if="chatResponse" class="bot-message">
             <strong>Bot:</strong> {{ chatResponse }}
@@ -36,7 +35,7 @@
       </section>
 
       <section class="card">
-        <h2>📸 Analiză Imagine (Vision API)</h2>
+        <h2>📸 Analiză Imagine </h2>
         <div class="upload-area">
           <input type="file" @change="onFileChange" accept="image/*" class="file-input" />
           <button @click="uploadImage" class="btn primary" :disabled="!selectedFile || isUploading">

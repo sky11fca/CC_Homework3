@@ -1,34 +1,119 @@
 {
   "version": 2,
-  "dgSpecHash": "m2u7lwNoD8M=",
-  "success": true,
-  "projectFilePath": "/home/mrbogdanovich/git/CC_Homeworks/HW2/AuthenticationService/AuthenticationService.API/AuthenticationService.API.csproj",
-  "expectedPackageFiles": [
-    "/home/mrbogdanovich/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.1/fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.aspnetcore.openapi/10.0.0/microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.data.sqlite.core/10.0.5/microsoft.data.sqlite.core.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.entityframeworkcore/10.0.5/microsoft.entityframeworkcore.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.5/microsoft.entityframeworkcore.abstractions.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.5/microsoft.entityframeworkcore.analyzers.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.5/microsoft.entityframeworkcore.relational.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.entityframeworkcore.sqlite/10.0.5/microsoft.entityframeworkcore.sqlite.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.entityframeworkcore.sqlite.core/10.0.5/microsoft.entityframeworkcore.sqlite.core.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.extensions.dependencymodel/10.0.5/microsoft.extensions.dependencymodel.10.0.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.identitymodel.abstractions/8.16.0/microsoft.identitymodel.abstractions.8.16.0.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.16.0/microsoft.identitymodel.jsonwebtokens.8.16.0.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.identitymodel.logging/8.16.0/microsoft.identitymodel.logging.8.16.0.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.identitymodel.tokens/8.16.0/microsoft.identitymodel.tokens.8.16.0.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/microsoft.openapi/2.4.1/microsoft.openapi.2.4.1.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.11/sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/sqlitepclraw.core/2.1.11/sqlitepclraw.core.2.1.11.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.11/sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.11/sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/swashbuckle.aspnetcore.swagger/10.1.5/swashbuckle.aspnetcore.swagger.10.1.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/swashbuckle.aspnetcore.swaggergen/10.1.5/swashbuckle.aspnetcore.swaggergen.10.1.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/swashbuckle.aspnetcore.swaggerui/10.1.5/swashbuckle.aspnetcore.swaggerui.10.1.5.nupkg.sha512",
-    "/home/mrbogdanovich/.nuget/packages/system.identitymodel.tokens.jwt/8.16.0/system.identitymodel.tokens.jwt.8.16.0.nupkg.sha512"
-  ],
-  "logs": []
+  "dgSpecHash": "9yp7lbr1ctI=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'BCrypt.Net-Core (>= 1.6.0)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "BCrypt.Net-Core",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'FluentValidation (>= 12.1.1)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "FluentValidation",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'FluentValidation.DependencyInjectionExtensions (>= 12.1.1)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "FluentValidation.DependencyInjectionExtensions",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Microsoft.AspNetCore.OpenApi (>= 10.0.0)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "Microsoft.AspNetCore.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Microsoft.EntityFrameworkCore (>= 10.0.5)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Microsoft.EntityFrameworkCore.Sqlite (>= 10.0.5)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "Microsoft.EntityFrameworkCore.Sqlite",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Swashbuckle.AspNetCore.Swagger (>= 10.1.5)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "Swashbuckle.AspNetCore.Swagger",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Swashbuckle.AspNetCore.SwaggerGen (>= 10.1.5)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "Swashbuckle.AspNetCore.SwaggerGen",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Swashbuckle.AspNetCore.SwaggerUI (>= 10.1.5)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'System.IdentityModel.Tokens.Jwt (>= 8.16.0)' for 'net10.0'.",
+      "projectPath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "filePath": "C:\\Users\\Andrei\\CC\\HW3\\CC_Homework3\\AuthenticationService\\AuthenticationService.API\\AuthenticationService.API.csproj",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

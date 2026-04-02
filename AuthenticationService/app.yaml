@@ -1,0 +1,15 @@
+service: authapi
+runtime: custom
+env: flex
+
+env_variables:
+  ASPNETCORE_ENVIRONMENT: Production
+  ASPNETCORE_URLS: http://0.0.0.0:8080
+  # Starter setting for deployment. Replace with a durable data store before final submission.
+  ConnectionStrings__DefaultConnection: Data Source=/tmp/auth.db
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cpu_utilization:
+    target_utilization: 0.6

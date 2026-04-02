@@ -12,7 +12,12 @@ public class LoginCommandHandler(IValidator<LoginCommand> validator, Authenticat
         var validationResult = validator.Validate(command);
         if (!validationResult.IsValid)
         {
-            return Results.BadRequest("Could not validate your request");
+            var errors = validationResult.Errors
+                .Select(e => e.ErrorMessage)
+                .Distinct()
+                .ToArray();
+
+            return Results.BadRequest(new { errors });
         }
 
         var existingUser = await context.Users.FirstOrDefaultAsync(u => u.Email == command.Email);

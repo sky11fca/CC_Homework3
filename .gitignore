@@ -1,0 +1,65 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Docker / local data
+*.pid
+data/
+
+# Python (ChatbotAPI)
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node / Vite (webui)
+node_modules/
+dist/
+dist-ssr/
+coverage/
+*.tsbuildinfo
+.eslintcache
+*.timestamp-*-*.mjs
+
+# .NET (AuthenticationService)
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Auth sqlite files
+*.db
+*.db-shm
+*.db-wal
+
+# PHP / Composer
+vendor/
+
+# Test artifacts
+/cypress/videos/
+/cypress/screenshots/
+__screenshots__/

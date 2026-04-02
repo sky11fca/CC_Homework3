@@ -1,5 +1,5 @@
 dispatch:
-  -url: "*/api/chat/*"
+  -url: "*/ai/*"
   service: chatbotapi
 
   -url: "*/api/auth/*"

@@ -35,6 +35,7 @@ services:
     build:
       context: AuthenticationService
       dockerfile: AuthenticationService.API/Dockerfile
+    user: "${UID:-1000}:${GID:-1000}"
 
     ports:
       - "5000:5000"

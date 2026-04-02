@@ -1,10 +1,14 @@
 dispatch:
+  - url: "*/api/items*"
+    service: itemapi
+  - url: "*/api/purchase*"
+    service: itemapi
+  - url: "*/api/purchases*"
+    service: itemapi
   - url: "*/ai/*"
     service: chatbotapi
   - url: "*/api/auth/*"
     service: authapi
-  - url: "*/api/items/*"
-    service: itemapi
   - url: "*/api/media/*"
     service: mediaapi
   - url: "*/*"

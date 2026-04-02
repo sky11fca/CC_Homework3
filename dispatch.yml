@@ -5,6 +5,8 @@ dispatch:
     service: itemapi
   - url: "*/api/purchases*"
     service: itemapi
+  - url: "*/api/audit*"
+    service: auditservice
   - url: "*/ai/*"
     service: chatbotapi
   - url: "*/api/auth/*"

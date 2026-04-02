@@ -1,0 +1,13 @@
+# Defines the service name.
+service: auditservice
+# Specifies the runtime environment. 'custom' allows us to use our own Dockerfile.
+runtime: custom
+# Specifies that we are using the App Engine Flexible Environment.
+env: flex
+
+# Configures automatic scaling for your application.
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cpu_utilization:
+    target_utilization: 0.6

@@ -208,7 +208,7 @@ const uploadImage = async () => {
   formData.append('image', selectedFile.value);
 
   try {
-    const response = await axios.post('/api/media/upload', formData);
+    const response = await axios.post('http://localhost:8081/api/media/upload', formData);
     imageTags.value = response.data.tags;
   } catch (error) {
     alert("Eroare la procesarea imaginii. Ai pornit MediaService-ul tău local?");

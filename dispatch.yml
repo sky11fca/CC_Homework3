@@ -2,8 +2,10 @@ dispatch:
   # Rute către Teammate B (Data & Logic)
   - url: "*/api/items/*"
     service: itemapi
-  -url: "*/ai/*"
-  service: chatbotapi
+
+
+  - url: "*/ai/*"
+    service: chatbotapi
 
   # Rute către Teammate C (AI & Security)
   - url: "*/api/auth/*"
